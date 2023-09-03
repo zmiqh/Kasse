@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kassen</title>
+</head>
+<body>
+    <h1>Kassen</h1>
+    <form id="kassenForm">
+        <!-- Mynter -->
+        <label>Hvor mange 1 kroner? <input type="number" id="Enkroner"></label><br>
+        <label>Hvor mange 5 kroner? <input type="number" id="Femkroner"></label><br>
+        <label>Hvor mange 10 kroner? <input type="number" id="Tikroner"></label><br>
+        <label>Hvor mange 20 kroner? <input type="number" id="Tjuekroner"></label><br>
+
+        <!-- Lapper -->
+        <label>Hvor mange 50 lapper? <input type="number" id="femtilapper"></label><br>
+        <label>Hvor mange 100 lapper? <input type="number" id="Hundrelapper"></label><br>
+        <label>Hvor mange 200 lapper? <input type="number" id="Tohundrelapper"></label><br>
+        <label>Hvor mange 500 lapper? <input type="number" id="Femhundrelapper"></label><br>
+        <label>Hvor mange 1000 lapper? <input type="number" id="Tusenlapper"></label><br>
+        <label>Ekstra mynter? <input type="number" id="ekstramynter"></label><br>
+
+        <input type="button" value="Beregn" onclick="beregnKassen()">
+    </form>
+
+    <div id="resultat"></div>
+
+    <script>
+        function beregnKassen() {
+            var Enkroner = parseInt(document.getElementById("Enkroner").value);
+            var Femkroner = parseInt(document.getElementById("Femkroner").value);
+            var Tikroner = parseInt(document.getElementById("Tikroner").value);
+            var Tjuekroner = parseInt(document.getElementById("Tjuekroner").value);
+            var femtilapper = parseInt(document.getElementById("femtilapper").value);
+            var Hundrelapper = parseInt(document.getElementById("Hundrelapper").value);
+            var Tohundrelapper = parseInt(document.getElementById("Tohundrelapper").value);
+            var Femhundrelapper = parseInt(document.getElementById("Femhundrelapper").value);
+            var Tusenlapper = parseInt(document.getElementById("Tusenlapper").value);
+            var ekstramynter = parseInt(document.getElementById("ekstramynter").value);
+
+            var verdi_femkroner = Femkroner * 5;
+            var verdi_Tikroner = Tikroner * 10;
+            var verdi_tjuekroner = Tjuekroner * 20;
+            var verdi_femtilapper = femtilapper * 50;
+            var verdi_Hundrelapper = Hundrelapper * 100;
+            var verdi_Tohundrelapper = Tohundrelapper * 200;
+            var verdi_Femhundrelapper = Femhundrelapper * 500;
+            var verdi_Tusenlapper = Tusenlapper * 1000;
+            var total_verdi = Enkroner + verdi_femkroner + verdi_Tikroner + verdi_tjuekroner + verdi_femtilapper + verdi_Hundrelapper + verdi_Tohundrelapper + verdi_Femhundrelapper + verdi_Tusenlapper + ekstramynter;
+            var Uttak = total_verdi - 2500;
+
+            var resultatDiv = document.getElementById("resultat");
+            if (total_verdi < 2500) {
+                resultatDiv.innerHTML = "Det er for lite penger i kassen";
+            } else {
+                resultatDiv.innerHTML = "Det er totalt " + total_verdi + " i Kassen, Du skal ta ut " + Uttak + " Kroner";
+            }
+        }
+    </script>
+</body>
+</html>
